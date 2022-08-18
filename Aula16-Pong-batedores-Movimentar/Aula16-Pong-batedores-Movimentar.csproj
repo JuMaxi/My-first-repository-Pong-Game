@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Aula16_Pong_batedores_Movimentar</RootNamespace>
+  </PropertyGroup>
+
+</Project>
