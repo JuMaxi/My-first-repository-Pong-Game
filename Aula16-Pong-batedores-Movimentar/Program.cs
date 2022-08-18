@@ -8,8 +8,8 @@ namespace Aula16_Pong_batedores_Movimentar
         static int posicaoBatedor2 = 13;
         static int coluna = 55;
         static int linha = 12;
-        static bool verificacaolinha = false;
-        static bool verificacaocoluna = false;
+        static bool BallGoingUp = false;
+        static bool BallGoingRight = false;
         static int Jogador1 = 0;
         static int Jogador2 = 0;
 
@@ -167,23 +167,23 @@ namespace Aula16_Pong_batedores_Movimentar
         {
 
             // Movimentar a bolinha no sentido das linhas
-            if (verificacaolinha == false)
+            if (BallGoingUp == false)
             {
                 linha--;
 
 
                 if (linha == 0)
                 {
-                    verificacaolinha = true;
+                   BallGoingUp = true;
                 }
             }
-            if (verificacaolinha == true)
+            if (BallGoingUp == true)
             {
                 linha++;
 
                 if (linha == 25)
                 {
-                    verificacaolinha = false;
+                    BallGoingUp = false;
                 }
             }
             // Fim de movimentar a bolinha no sentido das linhas
@@ -192,23 +192,23 @@ namespace Aula16_Pong_batedores_Movimentar
         static void MovimentarBolinhasSentidoColunasEPlacarJogador()
         {
             // Movimentar a bolinha no sentido das colunas
-            if (verificacaocoluna == false)
+            if (BallGoingRight == false)
             {
                 coluna++;
                 if (coluna == 111)
                 {
-                    verificacaocoluna = true;
+                    BallGoingRight = true;
                     coluna = 55;
                     linha = 12;
                     Jogador1 = Jogador1 + 1;
                 }
             }
-            if (verificacaocoluna == true)
+            if (BallGoingRight == true)
             {
                 coluna--;
                 if (coluna == 1)
                 {
-                    verificacaocoluna = false;
+                    BallGoingRight = false;
                     coluna = 55;
                     linha = 12;
                     Jogador2 = Jogador2 + 1;
@@ -226,7 +226,7 @@ namespace Aula16_Pong_batedores_Movimentar
                 for (int batedor1 = posicao1; batedor1 <= posicao1 + 2; batedor1++)
                     if (batedor1 == linha)
                     {
-                        verificacaocoluna = false;
+                        BallGoingRight = false;
                     }
             }
             if (coluna == 104)
@@ -236,7 +236,7 @@ namespace Aula16_Pong_batedores_Movimentar
                 {
                     if (batedor2 == linha)
                     {
-                        verificacaocoluna = true;
+                        BallGoingRight = true;
                     }
                 }
             }
