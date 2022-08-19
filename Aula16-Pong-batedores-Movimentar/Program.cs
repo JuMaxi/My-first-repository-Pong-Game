@@ -4,28 +4,29 @@ namespace Aula16_Pong_batedores_Movimentar
 {
     class Program
     {
-        static int posicaoBatedor1 = 9;
-        static int posicaoBatedor2 = 13;
-        static int coluna = 55;
-        static int linha = 12;
+        static int PositionPlayer1 = 9;
+        static int PositionPlayer2 = 13;
+        static int PositionColumn = 55;
+        static int PositionLine = 12;
         static bool BallGoingUp = false;
         static bool BallGoingRight = false;
-        static int Jogador1 = 0;
-        static int Jogador2 = 0;
+        static int Player1 = 0;
+        static int Player2 = 0;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern short GetAsyncKeyState(int key);
 
-        static bool CheckarTecla(int codigoTecla)
+        static bool CheckarTecla(int CodeKey)
         {
-            return (0x8000 & GetAsyncKeyState(codigoTecla)) != 0;
+            return (0x8000 & GetAsyncKeyState(CodeKey)) != 0;
         }
 
-        static void DesenharQuadrado()
+        static void DrawFrame()
         {
-            for (int colunaright = 0; colunaright <= 111; colunaright++)
+            // Start Draw Frame
+            for (int UpperFrame = 0; UpperFrame <= 111; UpperFrame++)
             {
-                Console.SetCursorPosition(colunaright, 0);
+                Console.SetCursorPosition(UpperFrame, 0);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("═");
                 Console.ResetColor();
@@ -35,9 +36,9 @@ namespace Aula16_Pong_batedores_Movimentar
             Console.WriteLine("╔");
             Console.ResetColor();
 
-            for (int linhadown = 1; linhadown <= 25; linhadown++)
+            for (int LeftFrame = 1; LeftFrame <= 25; LeftFrame++)
             {
-                Console.SetCursorPosition(0, linhadown);
+                Console.SetCursorPosition(0, LeftFrame);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("║");
                 Console.ResetColor();
@@ -48,9 +49,9 @@ namespace Aula16_Pong_batedores_Movimentar
             Console.WriteLine("╚");
             Console.ResetColor();
 
-            for (int colunaright2 = 1; colunaright2 <= 111; colunaright2++)
+            for (int BottomFrame = 1; BottomFrame <= 111; BottomFrame++)
             {
-                Console.SetCursorPosition(colunaright2, 26);
+                Console.SetCursorPosition(BottomFrame, 26);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("═");
                 Console.ResetColor();
@@ -61,9 +62,9 @@ namespace Aula16_Pong_batedores_Movimentar
             Console.WriteLine("╗");
             Console.ResetColor();
 
-            for (int linhadown2 = 1; linhadown2 <= 25; linhadown2++)
+            for (int RightFrame = 1; RightFrame <= 25; RightFrame++)
             {
-                Console.SetCursorPosition(111, linhadown2);
+                Console.SetCursorPosition(111, RightFrame);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("║");
                 Console.ResetColor();
@@ -73,256 +74,267 @@ namespace Aula16_Pong_batedores_Movimentar
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("╝");
             Console.ResetColor();
+
+            // End Start Draw Frame
         }
 
-        static void DesenharBatedores()
+        static void DrawPlayers()
         {
-            // Desenhar Batedor 1
-            for (int batedor1 = posicaoBatedor1; batedor1 <= posicaoBatedor1 + 2; batedor1++)
+            // Draw Player 1
+            for (int Player1 = PositionPlayer1; Player1 <= PositionPlayer1 + 2; Player1++)
             {
-                Console.SetCursorPosition(6, batedor1);
+                Console.SetCursorPosition(6, Player1);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("▐ ");
                 Console.ResetColor();
             }
-            // Fim desenhar Batedor 1
+            // End Draw Player 1
 
-            // Desenhar Batedor 2
-            for (int batedor2 = posicaoBatedor2; batedor2 <= posicaoBatedor2 + 2; batedor2++)
+            // Draw Player 2
+            for (int Player2 = PositionPlayer2; Player2 <= PositionPlayer2 + 2; Player2++)
             {
-                Console.SetCursorPosition(105, batedor2);
+                Console.SetCursorPosition(105, Player2);
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("▐ ");
                 Console.ResetColor();
             }
-            // Fim desenhar Batedor 2
+            // End Draw Player 2
         }
 
-        static void MovimentarBatedores()
+        static void MovePlayers()
         {
-            //Verificar se a Tecla Q foi pressionada (subir o batedor 1)
-            bool teclaQpressionada = CheckarTecla(81);
-            if (teclaQpressionada)
+            // Check if Q Key was pressed - Player 1 up
+            bool KeyQPressed = CheckarTecla(81);
+            if (KeyQPressed)
             {
-                Console.SetCursorPosition(6, (posicaoBatedor1 + 2));
+                Console.SetCursorPosition(6, (PositionPlayer1 + 2));
                 Console.WriteLine(" ");
 
-                posicaoBatedor1--;
+                PositionPlayer1--;
 
-                if (posicaoBatedor1 == 0)
+                if (PositionPlayer1 == 0)
                 {
-                    posicaoBatedor1 = 1;
+                    PositionPlayer1 = 1;
                 }
             }
-            // Fim de Verificar se a TEcla Q foi pressionada (subir o batedor 1)
+            // End Check if Q Key was pressed - Player 1 up
 
-            // Verificar se a Tecla A foi pressionada (descer o batedor 1)
-            bool teclaApressionada = CheckarTecla(65);
-            if (teclaApressionada)
+            // Check if A Key was pressed - Player 1 down
+            bool KeyAPressed = CheckarTecla(65);
+            if (KeyAPressed)
             {
-                Console.SetCursorPosition(6, posicaoBatedor1);
+                Console.SetCursorPosition(6, PositionPlayer1);
                 Console.WriteLine(" ");
 
-                posicaoBatedor1++;
+                PositionPlayer1++;
 
-                if (posicaoBatedor1 == 24)
+                if (PositionPlayer1 == 24)
                 {
-                    posicaoBatedor1 = 23;
+                    PositionPlayer1 = 23;
                 }
             }
-            // Fim de Verificar se a Tecla A foi pressionada (descer o batedor 1)
+            // End Check if A Key was pressed - Player 1 down
 
 
 
-            // Verificar se a Tecla P foi pressionada (subir o batedor 2)
-            bool teclaPpressionada = CheckarTecla(80);
-            if (teclaPpressionada)
+            // Check if P Key was pressed - Player 2 up
+            bool KeyPPressed = CheckarTecla(80);
+            if (KeyPPressed)
             {
-                Console.SetCursorPosition(105, posicaoBatedor2 + 2);
+                Console.SetCursorPosition(105, PositionPlayer2 + 2);
                 Console.WriteLine(" ");
 
-                posicaoBatedor2--;
+                PositionPlayer2--;
 
-                if (posicaoBatedor2 == 0)
+                if (PositionPlayer2 == 0)
                 {
-                    posicaoBatedor2 = 1;
+                    PositionPlayer2 = 1;
                 }
             }
-            // Fim de Verificar se a Tecla P foi pressionada (subir o batedor 2)
+            // End Check if P Key was pressed - Player 2 up
 
-            // Verificar se a Tecla L foi pressionada (descer o batedor 2)
-            bool teclaLpressionada = CheckarTecla(76);
-            if (teclaLpressionada)
+            // Check if L Key was pressed - Player 2 down
+            bool KeyLPressed = CheckarTecla(76);
+            if (KeyLPressed)
             {
-                Console.SetCursorPosition(105, posicaoBatedor2);
+                Console.SetCursorPosition(105, PositionPlayer2);
                 Console.WriteLine(" ");
 
-                posicaoBatedor2++;
+                PositionPlayer2++;
 
-                if (posicaoBatedor2 == 24)
+                if (PositionPlayer2 == 24)
                 {
-                    posicaoBatedor2 = 23;
+                    PositionPlayer2 = 23;
                 }
             }
-            // Fim de Verificar se a Tecla L foi pressionada (descer o batedor 2)
+            // End Check if L Key was pressed - Player 2 down
         }
 
-        static void DesenharBolinha()
+        static void DrawBall()
         {
-            // Desenhar a Bolinha
-            Console.SetCursorPosition(coluna, linha);
+            // Draw the Ball
+            Console.SetCursorPosition(PositionColumn, PositionLine);
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("♥");
             Console.ResetColor();
-            // Fim de desenhar a Bolinha
+            // End Draw the Ball
         }
 
-        static void LimparBolinha()
+        static void CleanBall()
         {
-            // Limpar a bolinha
-            Console.SetCursorPosition(coluna, linha);
+            // Clean the Ball
+            Console.SetCursorPosition(PositionColumn, PositionLine);
             Console.WriteLine(" ");
-            // Fim de limopar a Bolinha
+            // End Clean the Ball
         }
 
-        static void MovimentarBolinhaSentidoLinhas()
+        static void MoveBallLines()
         {
 
-            // Movimentar a bolinha no sentido das linhas
+            // Move the Ball in the Position of Lines (up and down)
             if (BallGoingUp == false)
             {
-                linha--;
+                PositionLine--;
 
 
-                if (linha == 0)
+                if (PositionLine == 0)
                 {
                    BallGoingUp = true;
                 }
             }
             if (BallGoingUp == true)
             {
-                linha++;
+                PositionLine++;
 
-                if (linha == 25)
+                if (PositionLine == 25)
                 {
                     BallGoingUp = false;
                 }
             }
-            // Fim de movimentar a bolinha no sentido das linhas
+            // End Move the Ball in the Position of Lines (up and down)
         }
 
-        static void MovimentarBolinhasSentidoColunasEPlacarJogador()
+        static void MoveBallColumnAndScoreBoard()
         {
-            // Movimentar a bolinha no sentido das colunas
+            // Move the Ball in the Position of Columns (Left and Right)
             if (BallGoingRight == false)
             {
-                coluna++;
-                if (coluna == 111)
+                PositionColumn++;
+                if (PositionColumn == 111)
                 {
                     BallGoingRight = true;
-                    coluna = 55;
-                    linha = 12;
-                    Jogador1 = Jogador1 + 1;
+                    PositionColumn = 55;
+                    PositionLine = 12;
+            // Here, there is Scoreboard Player 1 
+                    Player1 = Player1 + 1;
+            // End Scoreboard Player 1
                 }
             }
             if (BallGoingRight == true)
             {
-                coluna--;
-                if (coluna == 1)
+                PositionColumn--;
+                if (PositionColumn == 1)
                 {
                     BallGoingRight = false;
-                    coluna = 55;
-                    linha = 12;
-                    Jogador2 = Jogador2 + 1;
+                    PositionColumn = 55;
+                    PositionLine = 12;
+            // Here, there is Scoreboard Player 1 
+                    Player2 = Player2 + 1;
+            // End Scoreboard Player 2
                 }
             }
-            // Fim de movimentar a bolinha no sentido das colunas
+            // End Move the Ball in the Position of Columns (Left and Right)
         }
 
-        static void EncostarBatedorERetornar()
+        static void PlayersTakeTheBall()
         {
-            // Fazer o batedor entender que a bolinha encostou nele e deve retornar
-            if (coluna == 7)
+            // Player 1 take the Ball and the Ball return
+            if (PositionColumn == 7)
             {
-                int posicao1 = posicaoBatedor1;
-                for (int batedor1 = posicao1; batedor1 <= posicao1 + 2; batedor1++)
-                    if (batedor1 == linha)
+                int PositionP1 = PositionPlayer1;
+                for (int Player1 = PositionP1; Player1 <= PositionP1 + 2; Player1++)
+                    if (Player1 == PositionLine)
                     {
                         BallGoingRight = false;
                     }
             }
-            if (coluna == 104)
+            // End Player 1 take the Ball and the Ball return
+
+            // Player 2 take the Ball and the Ball return
+            if (PositionColumn == 104)
             {
-                int posicao2 = posicaoBatedor2;
-                for (int batedor2 = posicao2; batedor2 <= posicao2 + 2; batedor2++)
+                int PositionP2 = PositionPlayer2;
+                for (int Player2 = PositionP2; Player2 <= PositionP2 + 2; Player2++)
                 {
-                    if (batedor2 == linha)
+                    if (Player2 == PositionLine)
                     {
                         BallGoingRight = true;
                     }
                 }
             }
-            // Fim de Fazer o batedor entender que a bolinha encostou nele e deve retornar
+            // End Player 2 take the Ball and the Ball return
         }
 
-        static void DesenharPlacar()
+        static void DrawScoreBoard()
         {
-            // Desenhar Placar
+            // Draw ScoreBoard
             Console.SetCursorPosition(52, 27);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("PLACAR:");
+            Console.WriteLine("SCOREBOARD:");
             Console.ResetColor();
 
             Console.SetCursorPosition(25, 28);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("JOGADOR 1");
+            Console.WriteLine("PLAYER 1");
             Console.ResetColor();
 
             Console.SetCursorPosition(74, 28);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("JOGADOR 2");
+            Console.WriteLine("PLAYER 2");
             Console.ResetColor();
-            // Fim de desenhar placar
+            // End Draw ScoreBoard
         }
 
-        static void MostrarPlacar()
+        static void ShowScoreBoard()
         {
-            // Indicar pontuação dos jogadores
+            // Show ScoreBoard Player 1
             Console.SetCursorPosition(29, 29);
-            Console.WriteLine(Jogador1);
+            Console.WriteLine(Player1);
+            // End Show ScoreBoard Player 1
 
+            // Show ScoreBoard Player 2
             Console.SetCursorPosition(79, 29);
-            Console.WriteLine(Jogador2);
-            // Fim de indicar a pontuação dos jogadores
+            Console.WriteLine(Player2);
+            // End Show ScoreBoard Player 2
         }
 
         static void Main(string[] args)
         {
-            DesenharQuadrado();
+            DrawFrame();
             
             while (true)
             {
-                DesenharBatedores();
+                DrawPlayers();
 
-                MovimentarBatedores();
+                MovePlayers();
 
-                DesenharBolinha();
+                DrawBall();
 
-                // Tempo movimento bolinha 
+                // Time Move Ball
                 Thread.Sleep(150);
-                // Fim de tempo movimento bolinha
+                // End Time Move Ball
 
-                LimparBolinha();
+                CleanBall();
 
-                MovimentarBolinhaSentidoLinhas();
+                MoveBallLines();
 
-                MovimentarBolinhasSentidoColunasEPlacarJogador();
+                MoveBallColumnAndScoreBoard();
 
-                EncostarBatedorERetornar();
+                PlayersTakeTheBall();
 
-                DesenharPlacar();
+                DrawScoreBoard();
 
-                MostrarPlacar();
+                ShowScoreBoard();
             }
         }
     }
