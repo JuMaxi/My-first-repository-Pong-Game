@@ -109,15 +109,21 @@ namespace Aula16_Pong_batedores_Movimentar
             {
                 Console.SetCursorPosition(6, (PositionPlayer1 + 2));
                 Console.WriteLine(" ");
-
                 PositionPlayer1--;
+                Console.SetCursorPosition(6, PositionPlayer1);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("▐ ");
+                Console.ResetColor();
 
-                if (PositionPlayer1 == 0)
+                if (PositionPlayer1 == 1)
                 {
-                    PositionPlayer1 = 1;
+                    PositionPlayer1 = 2;
+                    Console.SetCursorPosition(6, 2);
+                    Console.WriteLine(" ");
                 }
             }
             // End Check if Q Key was pressed - Player 1 up
+
 
             // Check if A Key was pressed - Player 1 down
             bool KeyAPressed = CheckarTecla(65);
@@ -125,12 +131,15 @@ namespace Aula16_Pong_batedores_Movimentar
             {
                 Console.SetCursorPosition(6, PositionPlayer1);
                 Console.WriteLine(" ");
-
                 PositionPlayer1++;
+                Console.SetCursorPosition(6, (PositionPlayer1 + 2));
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("▐ ");
+                Console.ResetColor();
 
-                if (PositionPlayer1 == 24)
+                if (PositionPlayer1 == 23)
                 {
-                    PositionPlayer1 = 23;
+                    PositionPlayer1 = 22;
                 }
             }
             // End Check if A Key was pressed - Player 1 down
@@ -152,6 +161,7 @@ namespace Aula16_Pong_batedores_Movimentar
                 }
             }
             // End Check if P Key was pressed - Player 2 up
+
 
             // Check if L Key was pressed - Player 2 down
             bool KeyLPressed = CheckarTecla(76);
