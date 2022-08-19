@@ -26,37 +26,53 @@ namespace Aula16_Pong_batedores_Movimentar
             for (int colunaright = 0; colunaright <= 111; colunaright++)
             {
                 Console.SetCursorPosition(colunaright, 0);
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("═");
+                Console.ResetColor();
             }
             Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("╔");
+            Console.ResetColor();
 
             for (int linhadown = 1; linhadown <= 25; linhadown++)
             {
                 Console.SetCursorPosition(0, linhadown);
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("║");
+                Console.ResetColor();
             }
 
             Console.SetCursorPosition(0, 26);
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("╚");
+            Console.ResetColor();
 
             for (int colunaright2 = 1; colunaright2 <= 111; colunaright2++)
             {
                 Console.SetCursorPosition(colunaright2, 26);
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("═");
+                Console.ResetColor();
             }
 
             Console.SetCursorPosition(111, 0);
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("╗");
+            Console.ResetColor();
 
             for (int linhadown2 = 1; linhadown2 <= 25; linhadown2++)
             {
                 Console.SetCursorPosition(111, linhadown2);
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("║");
+                Console.ResetColor();
             }
 
             Console.SetCursorPosition(111, 26);
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("╝");
+            Console.ResetColor();
         }
 
         static void DesenharBatedores()
@@ -65,7 +81,9 @@ namespace Aula16_Pong_batedores_Movimentar
             for (int batedor1 = posicaoBatedor1; batedor1 <= posicaoBatedor1 + 2; batedor1++)
             {
                 Console.SetCursorPosition(6, batedor1);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("▐ ");
+                Console.ResetColor();
             }
             // Fim desenhar Batedor 1
 
@@ -73,7 +91,9 @@ namespace Aula16_Pong_batedores_Movimentar
             for (int batedor2 = posicaoBatedor2; batedor2 <= posicaoBatedor2 + 2; batedor2++)
             {
                 Console.SetCursorPosition(105, batedor2);
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("▐ ");
+                Console.ResetColor();
             }
             // Fim desenhar Batedor 2
         }
@@ -151,7 +171,9 @@ namespace Aula16_Pong_batedores_Movimentar
         {
             // Desenhar a Bolinha
             Console.SetCursorPosition(coluna, linha);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("♥");
+            Console.ResetColor();
             // Fim de desenhar a Bolinha
         }
 
@@ -247,13 +269,19 @@ namespace Aula16_Pong_batedores_Movimentar
         {
             // Desenhar Placar
             Console.SetCursorPosition(52, 27);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("PLACAR:");
+            Console.ResetColor();
 
             Console.SetCursorPosition(25, 28);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("JOGADOR 1");
+            Console.ResetColor();
 
             Console.SetCursorPosition(74, 28);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("JOGADOR 2");
+            Console.ResetColor();
             // Fim de desenhar placar
         }
 
