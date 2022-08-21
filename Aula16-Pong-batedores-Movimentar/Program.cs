@@ -107,19 +107,15 @@ namespace Aula16_Pong_batedores_Movimentar
             bool KeyQPressed = CheckarTecla(81);
             if (KeyQPressed)
             {
-                Console.SetCursorPosition(6, (PositionPlayer1 + 2));
-                Console.WriteLine(" ");
-                PositionPlayer1--;
-                Console.SetCursorPosition(6, PositionPlayer1);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("▐ ");
-                Console.ResetColor();
-
-                if (PositionPlayer1 == 1)
+                if (PositionPlayer1 >= 2)
                 {
-                    PositionPlayer1 = 2;
-                    Console.SetCursorPosition(6, 2);
+                    Console.SetCursorPosition(6, (PositionPlayer1 + 2));
                     Console.WriteLine(" ");
+                    PositionPlayer1--;
+                    Console.SetCursorPosition(6, PositionPlayer1);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("▐ ");
+                    Console.ResetColor();
                 }
             }
             // End Check if Q Key was pressed - Player 1 up
@@ -129,17 +125,15 @@ namespace Aula16_Pong_batedores_Movimentar
             bool KeyAPressed = CheckarTecla(65);
             if (KeyAPressed)
             {
-                Console.SetCursorPosition(6, PositionPlayer1);
-                Console.WriteLine(" ");
-                PositionPlayer1++;
-                Console.SetCursorPosition(6, (PositionPlayer1 + 2));
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("▐ ");
-                Console.ResetColor();
-
-                if (PositionPlayer1 == 23)
+                if(PositionPlayer1 <= 22)
                 {
-                    PositionPlayer1 = 22;
+                    Console.SetCursorPosition(6, PositionPlayer1);
+                    Console.WriteLine(" ");
+                    PositionPlayer1++;
+                    Console.SetCursorPosition(6, (PositionPlayer1 + 2));
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("▐ ");
+                    Console.ResetColor();
                 }
             }
             // End Check if A Key was pressed - Player 1 down
@@ -150,14 +144,15 @@ namespace Aula16_Pong_batedores_Movimentar
             bool KeyPPressed = CheckarTecla(80);
             if (KeyPPressed)
             {
-                Console.SetCursorPosition(105, PositionPlayer2 + 2);
-                Console.WriteLine(" ");
-
-                PositionPlayer2--;
-
-                if (PositionPlayer2 == 0)
+                if(PositionPlayer2 >= 2)
                 {
-                    PositionPlayer2 = 1;
+                    Console.SetCursorPosition(105, PositionPlayer2 + 2);
+                    Console.WriteLine(" ");
+                    PositionPlayer2--;
+                    Console.SetCursorPosition(105, PositionPlayer2);
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("▐ ");
+                    Console.ResetColor();
                 }
             }
             // End Check if P Key was pressed - Player 2 up
@@ -167,14 +162,15 @@ namespace Aula16_Pong_batedores_Movimentar
             bool KeyLPressed = CheckarTecla(76);
             if (KeyLPressed)
             {
-                Console.SetCursorPosition(105, PositionPlayer2);
-                Console.WriteLine(" ");
-
-                PositionPlayer2++;
-
-                if (PositionPlayer2 == 24)
+                if(PositionPlayer2 <= 22)
                 {
-                    PositionPlayer2 = 23;
+                    Console.SetCursorPosition(105, PositionPlayer2);
+                    Console.WriteLine(" ");
+                    PositionPlayer2++;
+                    Console.SetCursorPosition(105, PositionPlayer2 + 2);
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("▐ ");
+                    Console.ResetColor();
                 }
             }
             // End Check if L Key was pressed - Player 2 down
