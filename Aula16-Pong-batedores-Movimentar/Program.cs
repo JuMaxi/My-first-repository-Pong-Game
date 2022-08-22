@@ -8,8 +8,8 @@ namespace Aula16_Pong_batedores_Movimentar
         static int PositionPlayer2 = 13;
         static int PositionColumn = 55;
         static int PositionLine = 12;
-        static bool BallGoingUp = false;
-        static bool BallGoingRight = false;
+        static bool BallGoingUp = true;
+        static bool BallGoingRight = true;
         static int Player1 = 0;
         static int Player2 = 0;
 
@@ -107,7 +107,7 @@ namespace Aula16_Pong_batedores_Movimentar
             bool KeyQPressed = CheckarTecla(81);
             if (KeyQPressed)
             {
-                if (PositionPlayer1 >= 2)
+                if (PositionPlayer1 >= 3)
                 {
                     Console.SetCursorPosition(6, (PositionPlayer1 + 2));
                     Console.WriteLine(" ");
@@ -143,7 +143,7 @@ namespace Aula16_Pong_batedores_Movimentar
             bool KeyPPressed = CheckarTecla(80);
             if (KeyPPressed)
             {
-                if(PositionPlayer2 >= 2)
+                if(PositionPlayer2 >= 3)
                 {
                     Console.SetCursorPosition(105, PositionPlayer2 + 2);
                     Console.WriteLine(" ");
@@ -197,23 +197,23 @@ namespace Aula16_Pong_batedores_Movimentar
         {
 
             // Move the Ball in the Position of Lines (up and down)
-            if (BallGoingUp == false)
+            if (BallGoingUp == true)
             {
                 PositionLine--;
 
 
                 if (PositionLine == 1)
                 {
-                   BallGoingUp = true;
+                   BallGoingUp = false;
                 }
             }
-            if (BallGoingUp == true)
+            if (BallGoingUp == false)
             {
                 PositionLine++;
 
                 if (PositionLine == 25)
                 {
-                    BallGoingUp = false;
+                    BallGoingUp = true;
                 }
             }
             // End Move the Ball in the Position of Lines (up and down)
@@ -222,12 +222,12 @@ namespace Aula16_Pong_batedores_Movimentar
         static void MoveBallColumnAndScoreBoard()
         {
             // Move the Ball in the Position of Columns (Left and Right)
-            if (BallGoingRight == false)
+            if (BallGoingRight == true)
             {
                 PositionColumn++;
                 if (PositionColumn == 111)
                 {
-                    BallGoingRight = true;
+                    BallGoingRight = false;
                     PositionColumn = 55;
                     PositionLine = 12;
             // Here, there is Scoreboard Player 1 
@@ -235,12 +235,12 @@ namespace Aula16_Pong_batedores_Movimentar
             // End Scoreboard Player 1
                 }
             }
-            if (BallGoingRight == true)
+            if (BallGoingRight == false)
             {
                 PositionColumn--;
                 if (PositionColumn == 1)
                 {
-                    BallGoingRight = false;
+                    BallGoingRight = true;
                     PositionColumn = 55;
                     PositionLine = 12;
             // Here, there is Scoreboard Player 1 
@@ -260,7 +260,7 @@ namespace Aula16_Pong_batedores_Movimentar
                 for (int Player1 = PositionP1; Player1 <= PositionP1 + 2; Player1++)
                     if (Player1 == PositionLine)
                     {
-                        BallGoingRight = false;
+                        BallGoingRight = true;
                     }
             }
             // End Player 1 take the Ball and the Ball return
@@ -273,7 +273,7 @@ namespace Aula16_Pong_batedores_Movimentar
                 {
                     if (Player2 == PositionLine)
                     {
-                        BallGoingRight = true;
+                        BallGoingRight = false;
                     }
                 }
             }
