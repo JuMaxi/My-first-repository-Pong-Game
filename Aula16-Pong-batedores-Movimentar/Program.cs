@@ -26,17 +26,17 @@ namespace Aula16_Pong_batedores_Movimentar
             // Start Draw Frame
             for (int UpperFrame = 0; UpperFrame <= 111; UpperFrame++)
             {
-                Console.SetCursorPosition(UpperFrame, 0);
+                Console.SetCursorPosition(UpperFrame, 1);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("═");
                 Console.ResetColor();
             }
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, 1);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("╔");
             Console.ResetColor();
 
-            for (int LeftFrame = 1; LeftFrame <= 25; LeftFrame++)
+            for (int LeftFrame = 2; LeftFrame <= 25; LeftFrame++)
             {
                 Console.SetCursorPosition(0, LeftFrame);
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -57,12 +57,12 @@ namespace Aula16_Pong_batedores_Movimentar
                 Console.ResetColor();
             }
 
-            Console.SetCursorPosition(111, 0);
+            Console.SetCursorPosition(111, 1);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("╗");
             Console.ResetColor();
 
-            for (int RightFrame = 1; RightFrame <= 25; RightFrame++)
+            for (int RightFrame = 2; RightFrame <= 25; RightFrame++)
             {
                 Console.SetCursorPosition(111, RightFrame);
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -139,7 +139,6 @@ namespace Aula16_Pong_batedores_Movimentar
             // End Check if A Key was pressed - Player 1 down
 
 
-
             // Check if P Key was pressed - Player 2 up
             bool KeyPPressed = CheckarTecla(80);
             if (KeyPPressed)
@@ -203,7 +202,7 @@ namespace Aula16_Pong_batedores_Movimentar
                 PositionLine--;
 
 
-                if (PositionLine == 0)
+                if (PositionLine == 1)
                 {
                    BallGoingUp = true;
                 }
